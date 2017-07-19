@@ -1,0 +1,39 @@
+version: '2'
+
+services:
+
+    workspace:
+        build:
+            context: ./workspace
+        volumes_from:
+            - volumes_source
+        links:
+          - testrpc
+        # ports:
+        #     - "3000:3000"
+        #     - "8080:8080"
+        tty: true
+        environment:
+            TESTRPC_PORT: 8545
+
+    testrpc:
+        build:
+            context: ./testrpc
+        volumes_from:
+            - volumes_source
+        ports:
+           - "8545:8545"
+
+    volumes_source:
+        build: ./volumes/application
+        volumes:
+            - ./app:/usr/share/app
+
+    volumes_data:
+        build: ./volumes/data
+        volumes:
+            - ./data/mysql:/var/lib/mysql
+            - ./data/postgres:/var/lib/postgres
+            - ./data/mariadb:/var/lib/mariadb
+            - ./data/redis:/data/redis
+            - ./data/mongo:/data/mongo
