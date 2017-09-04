@@ -31,9 +31,3 @@ services:
 
     volumes_data:
         build: ./volumes/data
-        volumes:
-            - ./data/mysql:/var/lib/mysql
-            - ./data/postgres:/var/lib/postgres
-            - ./data/mariadb:/var/lib/mariadb
-            - ./data/redis:/data/redis
-            - ./data/mongo:/data/mongo
