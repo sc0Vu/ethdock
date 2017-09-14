@@ -24,6 +24,15 @@ services:
         ports:
            - "8545:8545"
 
+    geth:
+        build:
+            context: ./geth
+        volumes_from:
+            - volumes_source
+        ports:
+            - "8545:8545"
+            - "30303:30303"
+
     volumes_source:
         build: ./volumes/application
         volumes:
