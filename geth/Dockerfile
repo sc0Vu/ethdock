@@ -2,6 +2,8 @@ FROM debian:wheezy
 
 MAINTAINER Peter Lai <alk03073135@gmail.com>
 
+ADD genesis.json /
+
 # setup environment variables
 ENV GOROOTBASE /usr/local
 ENV GOROOT /usr/local/go
@@ -28,9 +30,6 @@ RUN apt-get install -y build-essential git && \
 # copy geth bin
 RUN cp $HOME/go-ethereum/build/bin/geth /usr/local/bin/ 
 
-# copy geth genesis.json
-COPY genesis.json /geth/genesis.json
-
 # running geth
-RUN geth init /geth/genesis.json
-CMD geth --datadir "." --networkid 999 --identity "ethdock" --rpc --rpcapi="db,eth,net,web3,personal" --rpcport "8545" --rpccorsdomain "*" --rpcaddr "0.0.0.0" --dev console
+# CMD geth --datadir "." --networkid 999 --identity "ethdock" --rpc --rpcapi="db,eth,net,web3,personal" --rpcport "8545" --rpccorsdomain "*" --rpcaddr "0.0.0.0" --dev console
+CMD geth init /genesis.json
