@@ -32,6 +32,11 @@ services:
         ports:
             - "8545:8545"
             - "30303:30303"
+        environment:
+            GOROOTBASE: /usr/local
+            GOROOT: /usr/local/go
+            GOPATH: /go
+            GETH_PORT: 8545
 
     volumes_source:
         build: ./volumes/application
