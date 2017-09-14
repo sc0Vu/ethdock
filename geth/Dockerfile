@@ -25,5 +25,8 @@ RUN apt-get install -y build-essential git && \
     cd $HOME/go-ethereum && \
     make geth
 
+# copy geth bin
+RUN cp $HOME/go-ethereum/build/bin/geth /usr/local/bin/ 
+
 # running geth
-CMD $HOME/go-ethereum/build/bin/geth --datadir "." --networkid 999 --identity "ethdock" --rpc --rpcapi="db,eth,net,web3,personal" --rpcport "8545" --rpccorsdomain "*" --rpcaddr "0.0.0.0" --dev console
+CMD geth --datadir "." --networkid 999 --identity "ethdock" --rpc --rpcapi="db,eth,net,web3,personal" --rpcport "8545" --rpccorsdomain "*" --rpcaddr "0.0.0.0" --dev console
