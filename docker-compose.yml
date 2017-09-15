@@ -9,34 +9,46 @@ services:
             - volumes_source
         links:
           - testrpc
+          - geth
+        # if you want to connect from host
         # ports:
         #     - "3000:3000"
         #     - "8080:8080"
         tty: true
         environment:
             TESTRPC_PORT: 8545
+        networks:
+            - blockchain
 
     testrpc:
         build:
             context: ./testrpc
         volumes_from:
             - volumes_source
-        ports:
-           - "8545:8545"
+        # if you want to connect from host
+        # ports:
+        #    - "8545:8545"
+        networks:
+            - blockchain
 
     geth:
         build:
             context: ./geth
         volumes_from:
             - volumes_data
-        ports:
-            - "8545:8545"
-            - "30303:30303"
+        # if you want to connect from host
+        # ports:
+        #     - "8545:8545"
+        #     - "30303:30303"
+        stdin_open: true
+        tty: true
         environment:
             GOROOTBASE: /usr/local
             GOROOT: /usr/local/go
             GOPATH: /go
             GETH_PORT: 8545
+        networks:
+            - blockchain
 
     volumes_source:
         build: ./volumes/application
@@ -47,3 +59,7 @@ services:
         build: ./volumes/data
         volumes:
             - ./data/geth:/geth
+
+networks:
+    blockchain:
+        driver: "bridge"

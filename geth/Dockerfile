@@ -28,8 +28,8 @@ RUN apt-get install -y build-essential git && \
     make geth
 
 # copy geth bin
-RUN cp $HOME/go-ethereum/build/bin/geth /usr/local/bin/ 
+RUN ln -s $HOME/go-ethereum/build/bin/geth /usr/local/bin/geth
 
 # running geth
 # CMD geth --datadir "." --networkid 999 --identity "ethdock" --rpc --rpcapi="db,eth,net,web3,personal" --rpcport "8545" --rpccorsdomain "*" --rpcaddr "0.0.0.0" --dev console
-CMD geth init /genesis.json
+ENTRYPOINT ["geth", "init", "/genesis.json"]
