@@ -1,11 +1,19 @@
 # ethdock
 
-Ethereum smart contract development package in moby.
+Ethereum smart contract development package in moby(docker).
 
 # Usage
 
+### testrpc
+
 ```
-docker-compose up -d workspace
+docker-compose up -d workspace testrpc
+```
+
+### geth
+
+```
+docker-compose up -d workspace geth
 ```
 
 Place the contract in app directory and enter container
@@ -17,7 +25,7 @@ docker-compose exec workspace bash
 Change truffle.js host
 
 ```
-host: 'testrpc'
+host: 'testrpc' or host: 'geth'
 ```
 
 Run test
@@ -26,18 +34,6 @@ Run test
 truffle test
 ```
 
-## geth
+> Remember to set from when using geth as testnet!
 
-```
-docker-compose up -d geth
-```
-
-## /bin/sh issue
-
-Right now, moby use /bin/sh as default command.
-
-Sometimes the geth will build error.
-
-See https://github.com/moby/moby/issues/7281 and https://github.com/eromoe/docker/commit/7dccc72bb24c715f176e4980ab59fd7aeb149a5f
-
-# Have Fun
+Have Fun!
