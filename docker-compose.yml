@@ -40,8 +40,8 @@ services:
         # ports:
         #     - "8545:8545"
         #     - "30303:30303"
-        stdin_open: true
-        tty: true
+        # stdin_open: true
+        # tty: true
         environment:
             GOROOTBASE: /usr/local
             GOROOT: /usr/local/go

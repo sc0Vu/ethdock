@@ -3,6 +3,7 @@ FROM debian:wheezy
 MAINTAINER Peter Lai <alk03073135@gmail.com>
 
 ADD genesis.json /
+# ADD geth.sh /etc/init.d/geth.sh
 
 # setup environment variables
 ENV GOROOTBASE /usr/local
@@ -29,7 +30,10 @@ RUN apt-get install -y build-essential git && \
 
 # copy geth bin
 RUN ln -s $HOME/go-ethereum/build/bin/geth /usr/local/bin/geth
+    #chmod +x /etc/init.d/geth.sh && \
+    #chown root:root /etc/init.d/geth.sh && \
+    #update-rc.d geth.sh default
+    #/etc/init.d/geth.sh start
 
 # running geth
-# CMD geth --datadir "." --networkid 999 --identity "ethdock" --rpc --rpcapi="db,eth,net,web3,personal" --rpcport "8545" --rpccorsdomain "*" --rpcaddr "0.0.0.0" --dev console
-ENTRYPOINT ["geth", "init", "/genesis.json"]
+CMD geth --datadir "." --rpcapi "db,personal,eth,net,web3" --rpccorsdomain "*" --networkid 999 --identity "ethdock" --rpc --rpcaddr "0.0.0.0"  --rpcport "8545" init="/genesis.json" --mine --etherbase 0
