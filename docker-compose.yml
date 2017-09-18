@@ -7,9 +7,9 @@ services:
             context: ./workspace
         volumes_from:
             - volumes_source
-        links:
-          - testrpc
-          - geth
+        # links:
+        #   - testrpc
+        #   - geth
         # if you want to connect from host
         # ports:
         #     - "3000:3000"
