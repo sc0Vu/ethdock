@@ -102,7 +102,9 @@ Have Fun!
 
 * When I try to build geth container, I got this error: no space left on device
   It might be the disk space is not enough to build container.
-  Please try to clean the docker images or docjer volumes that not in use.
+  
+  Please try to clean the docker images or docker volumes that not in use.
+  
   You can run this command to find volumes.
   ```
   $ docker volume ls
@@ -111,11 +113,11 @@ Have Fun!
   ```
   $ docker images
   ```
-  Remove volume
+  Remove volume.
   ```
   $ docker volume rm ...
   ```
-  Remove all images with name none
+  Remove all images with name none.
   ```
   $ docker rmi -f $(docker images | grep '^<none>' | awk '{print $3}')
   ```
