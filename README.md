@@ -75,6 +75,18 @@ Run test
 truffle test
 ```
 
+### Test account for geth
+
+We've created an test account for geth.
+
+There is a `UTC--2017-10-25T06-00-32.515667900Z--7c33ce8d9edd822f4ebba8823f4b73c2804baa00` file in `/geth`.
+
+If you cannot create account, you can simply move the file to `/data/keystore`, and you'll see an account `7c33ce8d9edd822f4ebba8823f4b73c2804baa00` with password `123456` on the chain.
+
+> Please remember that never use this account in production environment!
+
+If you want to use your account, remamber to edit the `/geth/genesis.json` befor you start the geth service.
+
 ### porosity
 
 Porosity has installed in workspace container.
