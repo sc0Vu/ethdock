@@ -98,6 +98,28 @@ porosity --code $code --abi $abi --decompile --verbose 0
 
 Have Fun!
 
+# FAQ
+
+* When I try to build geth container, I got this error: no space left on device
+  It might be the disk space is not enough to build container.
+  Please try to clean the docker images or docjer volumes that not in use.
+  You can run this command to find volumes.
+  ```
+  $ docker volume ls
+  ```
+  You can run this command to find images.
+  ```
+  $ docker images
+  ```
+  Remove volume
+  ```
+  $ docker volume rm ...
+  ```
+  Remove all images with name none
+  ```
+  $ docker rmi -f $(docker images | grep '^<none>' | awk '{print $3}')
+  ```
+
 # License
 
 GPL3.0
