@@ -17,6 +17,7 @@ services:
         tty: true
         environment:
             TESTRPC_PORT: 8545
+            GETH_RPC_PORT: 8545
         networks:
             - blockchain
 
@@ -28,6 +29,8 @@ services:
         # if you want to connect from host
         # ports:
         #    - "8545:8545"
+        # environment:
+        #     TESTRPC_PORT: 8545
         networks:
             - blockchain
 
@@ -39,14 +42,15 @@ services:
         # if you want to connect from host
         # ports:
         #     - "8545:8545"
+        #     - "8546:8546"
         #     - "30303:30303"
+        #     - "30303/udp:30303/udp"
         # stdin_open: true
         # tty: true
         environment:
             GOROOTBASE: /usr/local
             GOROOT: /usr/local/go
             GOPATH: /go
-            GETH_PORT: 8545
         networks:
             - blockchain
 
@@ -59,6 +63,7 @@ services:
         build: ./volumes/data
         volumes:
             - ./data/geth:/geth
+            - ./data/keystore:/keystore
 
 networks:
     blockchain:

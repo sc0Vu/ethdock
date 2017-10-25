@@ -16,7 +16,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # install golang
 RUN apt-get update && \
-    apt-get install -y curl && \
+    apt-get install -y curl procps && \
     curl -O https://storage.googleapis.com/golang/go1.7.3.linux-amd64.tar.gz && \
     tar -C $GOROOTBASE -xzf go1.7.3.linux-amd64.tar.gz && \
     mkdir -p $GOPATH
@@ -35,5 +35,7 @@ RUN ln -s $HOME/go-ethereum/build/bin/geth /usr/local/bin/geth
     #update-rc.d geth.sh default
     #/etc/init.d/geth.sh start
 
+EXPOSE 8545 8546 30303 30303/udp
+
 # running geth
-CMD geth --datadir "." --rpcapi "db,personal,eth,net,web3" --rpccorsdomain "*" --networkid 999 --identity "ethdock" --rpc --rpcaddr "0.0.0.0"  --rpcport "8545" init="/genesis.json" --mine --etherbase 0
+CMD geth --datadir "." --port "30303" --rpcapi "db,personal,eth,net,web3" --rpccorsdomain "*" --networkid 314 --identity "ethdock" --rpc --rpcaddr "0.0.0.0" --rpcport "8545" --rpccorsdomain "*" --mine init=/genesis.json
