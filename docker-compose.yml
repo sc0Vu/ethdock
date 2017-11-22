@@ -34,6 +34,9 @@ services:
         # like localhost:8545
         # ports:
         #    - "8545:8545"
+        # random port
+        ports:
+            - "8545"
         networks:
             - blockchain
 
@@ -48,6 +51,12 @@ services:
         #     - "8546:8546"
         #     - "30303:30303"
         #     - "30303/udp:30303/udp"
+        # random port
+        ports:
+            - "8545"
+            - "8546"
+            - "30303"
+            - "30303/udp"
         # stdin_open: true
         # tty: true
         environment:
@@ -66,6 +75,9 @@ services:
         # like localhost:8545
         # ports:
         #    - "8545:8545"
+        # random port
+        ports:
+            - "8545"
         networks:
             - blockchain
 
