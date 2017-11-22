@@ -7,10 +7,13 @@ services:
             context: ./workspace
         volumes_from:
             - volumes_source
+        # if you want to start blockchain container automatically
         # links:
         #   - testrpc
         #   - geth
+        #   - ganache
         # if you want to connect from host
+        # like localhost:3000
         # ports:
         #     - "3000:3000"
         #     - "8080:8080"
@@ -18,6 +21,7 @@ services:
         environment:
             TESTRPC_PORT: 8545
             GETH_RPC_PORT: 8545
+            GANACHE_RPC_PORT: 8545
         networks:
             - blockchain
 
@@ -27,10 +31,9 @@ services:
         volumes_from:
             - volumes_source
         # if you want to connect from host
+        # like localhost:8545
         # ports:
         #    - "8545:8545"
-        # environment:
-        #     TESTRPC_PORT: 8545
         networks:
             - blockchain
 
@@ -51,6 +54,18 @@ services:
             GOROOTBASE: /usr/local
             GOROOT: /usr/local/go
             GOPATH: /go
+        networks:
+            - blockchain
+
+    ganache:
+        build:
+            context: ./ganache
+        volumes_from:
+            - volumes_source
+        # if you want to connect from host
+        # like localhost:8545
+        # ports:
+        #    - "8545:8545"
         networks:
             - blockchain
 
