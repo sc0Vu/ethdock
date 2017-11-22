@@ -75,6 +75,29 @@ Run test
 truffle test
 ```
 
+### ganache
+```
+docker-compose up -d workspace ganache
+```
+
+Place the contract in app directory and enter container
+
+```
+docker-compose exec workspace bash
+```
+
+Change truffle.js host
+
+```
+host: 'ganache'
+```
+
+Run test
+
+```
+truffle test
+```
+
 ### Test account for geth
 
 We've created an test account for geth.
