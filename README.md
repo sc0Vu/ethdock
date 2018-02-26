@@ -31,6 +31,11 @@ truffle test
 
 ### geth
 
+Default coinbase address: `0x7ee077f7afbc121e7b63d9baff6c8a52c3a9c2f3`
+Default coinbase private key: `0x88e524dee8bfb0dfb52ed4668ab88db605fe30b476e497d0fa1205e717fb9cb6`
+
+> Do not use this private key on mainnet.
+
 ```
 docker-compose up -d workspace geth
 ```

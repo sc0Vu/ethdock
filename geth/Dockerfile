@@ -38,4 +38,4 @@ RUN ln -s $HOME/go-ethereum/build/bin/geth /usr/local/bin/geth
 EXPOSE 8545 8546 30303 30303/udp
 
 # running geth
-CMD geth --datadir "." --port "30303" --rpcapi "db,personal,eth,net,web3" --rpccorsdomain "*" --networkid 314 --identity "ethdock" --rpc --rpcaddr "0.0.0.0" --rpcport "8545" --rpccorsdomain "*" --mine init=/genesis.json
+CMD geth --datadir "." --port "30303" --rpcapi "db,personal,eth,net,web3" --rpccorsdomain "*" --networkid 314 --identity "ethdock" --rpc --rpcaddr "0.0.0.0" --rpcport "8545" --rpccorsdomain "*" --etherbase "0x7ee077f7afbc121e7b63d9baff6c8a52c3a9c2f3" --mine init=/genesis.json
