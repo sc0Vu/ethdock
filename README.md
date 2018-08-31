@@ -115,27 +115,6 @@ If you cannot create account, you can simply move the file to `/data/keystore`, 
 
 If you want to use your account, remamber to edit the `/geth/genesis.json` befor you start the geth service.
 
-### porosity
-
-Porosity has installed in workspace container.
-
-Usage
-
-1. Set up params
-```
-abi = "Contract abi can get from truffle compile or solc compile"
-code = "Contract bin code can get from truffle compile or solc compile"
-```
-
-2. Run command
-```
-porosity --code $code --abi $abi --list --verbose 0
-porosity --code $code --abi $abi --disassm --verbose 0
-porosity --code $code --abi $abi --decompile --verbose 0
-```
-
-> See the [repo](https://github.com/comaeio/porosity) for more information.
-
 Have Fun!
 
 # FAQ

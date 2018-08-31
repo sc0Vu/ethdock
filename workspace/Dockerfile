@@ -8,19 +8,9 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 # install truffle
 RUN npm install -g truffle
 
-# upgrade gcc
-RUN echo "deb http://ftp.us.debian.org/debian unstable main contrib non-free" >> /etc/apt/sources.list.d/unstable.list && \
-    apt-get -y update && \
-    apt-get install -y -t unstable gcc-5 libboost-dev
-
-# install install porosity
-RUN cd ~ && \
-    git clone https://github.com/comaeio/porosity.git && \
-    cd porosity/porosity/porosity && \
-    make && \
-    ln -s ~/porosity/porosity/porosity/porosity /usr/local/bin/porosity && \
-    echo "alias porosity=/usr/local/bin/porosity" > ~/.bashrc && \
-    source ~/.bashrc
+# install keyring
+RUN apt-get install -y debian-archive-keyring && \
+    apt-key update
 
 # Clean up
 USER root
