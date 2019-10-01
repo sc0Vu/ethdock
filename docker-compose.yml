@@ -25,21 +25,6 @@ services:
         networks:
             - blockchain
 
-    testrpc:
-        build:
-            context: ./testrpc
-        volumes_from:
-            - volumes_source
-        # if you want to connect from host
-        # like localhost:8545
-        # ports:
-        #    - "8545:8545"
-        # random port
-        ports:
-            - "8545"
-        networks:
-            - blockchain
-
     geth:
         build:
             context: ./geth
