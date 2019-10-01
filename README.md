@@ -6,29 +6,6 @@ Ethereum smart contract development package in moby(docker).
 
 # Usage
 
-### testrpc
-```
-docker-compose up -d workspace testrpc
-```
-
-Place the contract in app directory and enter container
-
-```
-docker-compose exec workspace bash
-```
-
-Change truffle.js host
-
-```
-host: 'testrpc'
-```
-
-Run test
-
-```
-truffle test
-```
-
 ### geth
 
 Default coinbase address: `0x7ee077f7afbc121e7b63d9baff6c8a52c3a9c2f3`
